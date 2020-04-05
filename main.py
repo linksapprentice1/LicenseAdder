@@ -19,10 +19,8 @@ for i in process_lines:
         folder_name = i.replace("https://github.com/", "");
         folder_name = re.sub("[a-z1-9]*/","",folder_name)
         folder_name = folder_name.replace(".git","");
-        print folder_name
         bash_command = "sudo cp LICENSE " + folder_name + "/";
         subprocess.check_output(["bash", "-c", bash_command])
-        print("here1")
         subprocess.call ("bash pushLicense.sh "+ folder_name, shell=True);
 
 
