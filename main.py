@@ -1,3 +1,4 @@
+import os
 import subprocess
 import re
 
@@ -21,13 +22,9 @@ for i in process_lines:
         print folder_name
         bash_command = "sudo cp LICENSE " + folder_name + "/";
         subprocess.check_output(["bash", "-c", bash_command])
-#        print("here1")
-#        bash_command = "cd " + folder_name + "; sudo git add LICENSE; sudo git commit; sudo git push";
-#        subprocess.check_output(["bash", "-c", bash_command])
-#        print("here1")
-#        bash_command = "cd .."; 
-#        subprocess.check_output(["bash", "-c", bash_command]);
-#        print("here1")
+        print("here1")
+        subprocess.call ("bash pushLicense.sh "+ folder_name, shell=True);
+
 
 
 
