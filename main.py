@@ -2,6 +2,18 @@ import os
 import subprocess
 import re
 
+def putFullNameInLicense():
+    full_name = raw_input("Enter your full name:")
+    f = open("LICENSE", "r")
+    license = f.read()
+    f.close()
+    license = license.replace("Jeffrey Thomas Farrell", full_name)
+    wr = open("LICENSE", 'w')
+    wr.write(license)
+    wr.close()
+   
+putFullNameInLicense()
+
 bash_command="curl -si https://api.github.com/users/linksapprentice1/repos |     grep ssh_url | cut -d '\"' -f4" 
 process = subprocess.check_output(["bash", "-c", bash_command])
 process= process.replace("git@github.com:", "https://github.com/")
@@ -22,9 +34,3 @@ for i in process_lines:
         bash_command = "sudo cp LICENSE " + folder_name + "/";
         subprocess.check_output(["bash", "-c", bash_command])
         subprocess.call ("bash pushLicense.sh "+ folder_name, shell=True);
-
-
-
-
-          
-
